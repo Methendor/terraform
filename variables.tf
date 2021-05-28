@@ -18,7 +18,7 @@ variable "instance_count" {
     default = 1
 }
 
-variable "stack__name" {
+variable "stack_name" {
   description = "common prefix for all resource names"
   default = "alan"
 }
