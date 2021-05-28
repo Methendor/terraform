@@ -1,3 +1,5 @@
+# main terraform file
+
 module "ec2" {
   source                 = "terraform-aws-modules/ec2-instance/aws"
   version                = "~> 2.0"
