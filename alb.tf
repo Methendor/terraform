@@ -18,7 +18,7 @@ resource "aws_lb_target_group" "alb_tg" {
 resource "aws_lb_target_group_attachment" "target_registration" {
   count = var.instance_count
   target_group_arn = aws_lb_target_group.alb_tg.arn
-  target_id        = aws_instance.compute_nodes[count.index].id
+  target_id        = aws_instance.nginx_server[count.index].id
   port             = 80
 }
 

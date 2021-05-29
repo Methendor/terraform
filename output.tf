@@ -3,5 +3,5 @@ output "load_balancer_dns" {
 }
 
 output "ec2_ips" {
-    value = aws_instance.compute_nodes.*.public_ip
+    value = aws_instance.nginx_server.*.public_ip
 }
