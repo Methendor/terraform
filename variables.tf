@@ -15,7 +15,7 @@ variable "instance_type" {
 }
 
 variable "instance_count" {
-    default = 1
+    default = 2
 }
 
 variable "stack_name" {

@@ -16,7 +16,7 @@ resource "aws_lb_target_group" "alb_tg" {
 }
 
 resource "aws_lb_target_group_attachment" "target_registration" {
-  count = length(data.aws_availability_zones.available.names)
+  count = var.instance_count
   target_group_arn = aws_lb_target_group.alb_tg.arn
   target_id        = aws_instance.compute_nodes[count.index].id
   port             = 80
