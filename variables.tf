@@ -6,7 +6,7 @@ variable "ami" {
     default = "ami-080a9d82842161a72"
 }
 
-variable "key_name" {
+variable "key_name" { 
   default = "terraform-key"
 }
 

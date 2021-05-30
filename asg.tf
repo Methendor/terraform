@@ -4,8 +4,9 @@ resource "aws_launch_configuration" "asg-launch-config" {
     instance_type   = var.instance_type
     security_groups = [aws_security_group.ec2_sg.id]
     key_name        = var.key_name
+    iam_instance_profile = aws_iam_instance_profile.instance_profile.name
 
-    user_data       = templatefile("update_index.sh", { server_name = "${lower(var.stack_name)}-${lower(var.environment_name)}-ec2-asg" })
+    user_data       = templatefile("update_index.sh", { server_name = "${lower(var.stack_name)}-${lower(var.environment_name)}-ec2-asg", bucket_name = aws_s3_bucket.website_bucket.bucket })
 
     lifecycle {
     create_before_destroy = true
