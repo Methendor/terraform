@@ -5,17 +5,27 @@ variable "aws_region" {
 
 variable "ami" {
     description     = "the amazon Machine Image to be used to create the ec2 instances"
-    default         = "ami-080a9d82842161a72"
+    default         = ""
 }
 
 variable "instance_type" {
     description     = "the instance type to be used for ec2 instances"
-    default         = "t2.nano"
+    default         = ""
+}
+
+variable "single_nat_gateway" {
+    description     = "boolean to specify multiple NAT gateways or a single NAT gateway"
+    default         = ""
+}
+
+variable "desired_asg_instances" {
+    description     = "The number of instances the ASG will deploy"
+    default         = ""
 }
 
 variable "stack_name" {
     description     = "common prefix for all resource names"
-    default         = "alan"
+    default         = "methendor"
 }
 
 variable "environment_name" {
