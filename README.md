@@ -22,6 +22,15 @@
 5. Change to the repo directory you have just downloaded and initialize Terraform with 
    * ```terraform init```
 
+### ALTERNATIVE VIA DOCKER
+
+If you have docker set up, you can use the included Dockerfile to create a docker container which already has a linux environment set up with Terraform, awscli and git.  It also has the this repo installed into /tmp/terraform and the terraform has already been initialised.   To use this method, download the DockerFile in this repo to an appropriate directory and, from that directory run:
+   * ```docker build -t methendor/linux-tf-aws:1.0 .```
+This will create a docker container called linux-tf-aws.   Start this container with:
+   * ```docker run -it methendor/linux-tf-aws:1.0 /bin/bash```
+   * ```cd /tmp/terraform```
+   * Then proceed with running the Terraform below
+
 ### Running the Terraform
 
 1. Create the Terraform plan with 
