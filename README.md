@@ -13,7 +13,7 @@
 
 ### Setting up Terraform
 
-1. Download Terraform via https://github.com/Methendor/terraform
+1. Download Terraform via https://learn.hashicorp.com/tutorials/terraform/install-cli
 2. Download aws cli via https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html
    * Configure aws cli by typing ```aws configure``` and entering your Access Key and Secret Access key.   Enter region as 'eu-west-2' and output as 'json'
 3. Download git via https://gist.github.com/derhuerst/1b15ff4652a867391f03
