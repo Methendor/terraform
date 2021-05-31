@@ -1,18 +1,19 @@
-# main terraform file
+### VPC ###
+# create the vpc with 3 private subnets and 3 public subnets.   1 of each in each availability zone
+# also create a single NAT gateway to allow the instances in the private subnet to access the internet
+# the NAT will have an Elastic IP created for it automatically
+# (it is also possible to create a separate NAT for each private subnet to increase availability)
+module "vpc" {
+    source                  = "terraform-aws-modules/vpc/aws"
 
-module "ec2" {
-  source                 = "terraform-aws-modules/ec2-instance/aws"
-  version                = "~> 2.0"
+    name                    = "${lower(var.stack_name)}-${lower(var.environment_name)}-vpc"
+    cidr                    = "10.0.0.0/16"
 
-  name                   = "${lower(var.stack__name)}-${lower(var.environment_name)}-web-server"
-  instance_count         = var.instance_count
+    azs                     = data.aws_availability_zones.available.names
+    private_subnets         = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+    public_subnets          = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]
 
-  ami                    = var.ami
-  instance_type          = var.instance_type
-  key_name               = var.key_name
-
-  vpc_security_group_ids = [module.security_group.security_group_id]
-  subnet_id              = tolist(data.aws_subnet_ids.all.ids)[0]
-
-  associate_public_ip_address = true
+    enable_nat_gateway      = true
+    single_nat_gateway      = var.single_nat_gateway
+    one_nat_gateway_per_az  = false  
 }

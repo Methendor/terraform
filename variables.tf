@@ -1,29 +1,34 @@
 variable "aws_region" {
-  default = "eu-west-2"
+    description     = "aws region to be used for all objects"
+    default         = "eu-west-2"
 }
 
 variable "ami" {
-    default = "ami-080a9d82842161a72"
-}
-
-variable "key_name" {
-  default = "terraform-key"
+    description     = "the amazon Machine Image to be used to create the ec2 instances"
+    default         = ""
 }
 
 variable "instance_type" {
-    default = "t2.nano"
+    description     = "the instance type to be used for ec2 instances"
+    default         = ""
 }
 
-variable "instance_count" {
-    default = 1
+variable "single_nat_gateway" {
+    description     = "boolean to specify multiple NAT gateways or a single NAT gateway"
+    default         = ""
 }
 
-variable "stack__name" {
-  description = "common prefix for all resource names"
-  default = "alan"
+variable "desired_asg_instances" {
+    description     = "The number of instances the ASG will deploy"
+    default         = ""
+}
+
+variable "stack_name" {
+    description     = "common prefix for all resource names"
+    default         = "methendor"
 }
 
 variable "environment_name" {
-  description = "name of the environment to deploy into"
-  default = ""
+    description     = "name of the environment to deploy into. set by vars/*/env_vars.tfvars"
+    default         = ""
 }
