@@ -25,7 +25,7 @@ variable "desired_asg_instances" {
 
 variable "stack_name" {
     description     = "common prefix for all resource names"
-    default         = "methendor"
+    default         = "alanbutland"
 }
 
 variable "environment_name" {
